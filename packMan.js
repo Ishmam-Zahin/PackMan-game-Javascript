@@ -34,7 +34,6 @@ const gp = [
 //////////////////////////////////////////////////////////////////////////////
 const stopGame = function (){
     clearInterval(timer);
-    // console.log("xgame over");
     clearInterval(tickTimer);
 
     mainContainer.removeEventListener("click", determinePath);
