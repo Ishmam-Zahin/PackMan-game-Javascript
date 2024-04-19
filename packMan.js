@@ -129,12 +129,17 @@ const decreaseTime = function (){
         if(timer) clearInterval(timer);
         timer = setInterval(startpackMan, 400);
     }
+
+    timeLeft -= 1000;
+
     const minutes = Math.floor(timeLeft/(1000*60));
     const seconds = (Math.floor(timeLeft/1000) - minutes * 60);
 
-    timeLeftElement.innerHTML = `${String(minutes).padStart(2, "0")} : ${String(seconds).padStart(2, "0")}`;
-    timeLeft -= 1000;
-    if(timeLeft < 0){
+    if(timeLeft >= 0){
+        timeLeftElement.innerHTML = `${String(minutes).padStart(2, "0")} : ${String(seconds).padStart(2, "0")}`;
+    }
+
+    if(timeLeft <= 0){
         stopGame();
     }
 }
@@ -189,6 +194,8 @@ const resetStatus = function (){
 
     targetMan.style.left = `0px`;
     targetMan.style.top = `1px`;
+
+    timeLeftElement.innerHTML = `01 : 00`;
 
     packManPos[0] = 0;
     packManPos[1] = 0;
